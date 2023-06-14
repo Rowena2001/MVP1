@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ray-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ray-dashboard
+  template:
+    metadata:
+      labels:
+        app: ray-dashboard
+    spec:
+      containers:
+      - name: ray-dashboard
+        image: rayproject/ray-dashboard:latest
+        ports:
+        - containerPort: 8265

@@ -1,0 +1,14 @@
+apiVersion: serving.kuberay.io/v1alpha1
+kind: RayServeDeployment
+metadata:
+  name: MyModelDeployment
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: my-model-container
+        image: <your-image-name>
+        command: ["ray", "serve", "--http-host", "0.0.0.0", "--http-port", "8000", "helloworld.py:my_deployment"]
+        ports:
+        - containerPort: 8000
